@@ -1,15 +1,15 @@
 package com.example.notesapi.repository;
 
 import com.example.notesapi.entity.Note;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 public interface NotesRepository extends JpaRepository<Note, Long> {
 
-    List<Note> findAllByUser(String name);
+    Page<Note> findAllByUser(String name, Pageable pageable);
 
-    List<Note> findAllByUserAndTitleContainingIgnoreCase(String name, String title);
+    Page<Note> findAllByUserAndTitleContainingIgnoreCase(String name, String title, Pageable pageable);
 }
